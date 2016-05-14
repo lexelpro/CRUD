@@ -29,8 +29,7 @@ public class User implements Serializable {
     @Column
     private int age;
     
-    @Column
-    private float salary;
+
 
     public User() {
     }
@@ -52,12 +51,7 @@ public class User implements Serializable {
     public void setAge(int age) {
         this.age = age;
     }
-    public float getSalary() {
-        return salary;
-    }
-    public void setSalary(float salary) {
-        this.salary = salary;
-    }
+
     
     @Override
     public String toString() {
@@ -65,7 +59,6 @@ public class User implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
-                ", salary=" + salary +
-                '}';
+                " }";
     }
 }

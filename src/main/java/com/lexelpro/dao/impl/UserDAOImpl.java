@@ -67,11 +67,9 @@ public class UserDAOImpl implements UserDAO {
 			long id = ((BigInteger) userObject[0]).longValue();			
 			int age = (int) userObject[1];
 			String name = (String) userObject[2];
-			float salary = (float) userObject[3];
 			user.setId(id);
 			user.setName(name);
 			user.setAge(age);
-			user.setSalary(salary);
 			users.add(user);
 		}
 		System.out.println(users);

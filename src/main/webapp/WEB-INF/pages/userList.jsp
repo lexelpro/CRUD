@@ -48,7 +48,6 @@
                         <th>Id</th>
                         <th>Name</th>
                         <th>Age</th>
-                        <th>Salary</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -59,7 +58,6 @@
                         	<th><c:out value="${emp.id}"/></th>
                         	<th><c:out value="${emp.name}"/></th>
                         	<th><c:out value="${emp.age}"/></th>
-                        	<th><c:out value="${emp.salary}"/></th> 
                         	<th><a href="editUser?id=<c:out value='${emp.id}'/>">Edit</a></th>
                         	<th><a href="deleteUser?id=<c:out value='${emp.id}'/>">Delete</a></th>                         	
                         </tr>
