@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import java.io.Serializable;
+import java.util.Date;
+
 /**
  * @author Lexel PRO
  * @version 1.0
@@ -28,8 +30,12 @@ public class User implements Serializable {
     
     @Column
     private int age;
-    
 
+    @Column
+    private boolean admin;
+
+    @Column
+    private Date createdDate;
 
     public User() {
     }
@@ -52,13 +58,30 @@ public class User implements Serializable {
         this.age = age;
     }
 
-    
+    public boolean getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
-                " }";
+                ", isAdmin=" + admin +
+                ", createdDate=" + createdDate +
+                '}';
     }
 }

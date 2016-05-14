@@ -50,8 +50,16 @@
                             <form:input cssClass="form-control" path="age" value="${userObject.age}"/>
                         </div>
                     </div>
-    
 
+                    <div class="form-group">
+                        <div class="control-label col-xs-3">
+                            <form:label path="admin" cssClass="control-label col-xs-3">admin</form:label>
+                            <form:select path="admin">
+                                 <form:option value="true" label="YES"/>
+                                 <form:option value="false" label="NO"/>
+                            </form:select>
+                        </div>
+                    </div>
     
                     <div class="form-group">
                         <div class="row">

@@ -11,7 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigInteger;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -67,9 +71,13 @@ public class UserDAOImpl implements UserDAO {
 			long id = ((BigInteger) userObject[0]).longValue();			
 			int age = (int) userObject[1];
 			String name = (String) userObject[2];
-			user.setId(id);
+            boolean isAdmin = (boolean)userObject[3];
+            Date date = (Date) userObject[4];
+            user.setId(id);
 			user.setName(name);
 			user.setAge(age);
+            user.setAdmin(isAdmin);
+            user.setCreatedDate(date);
 			users.add(user);
 		}
 		System.out.println(users);
