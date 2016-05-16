@@ -3,6 +3,7 @@ import com.lexelpro.entity.User;
 import com.lexelpro.service.UserService;
 
 import org.jboss.logging.Logger;
+import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -59,12 +60,36 @@ public class UserController {
         userService.deleteUser(id);
         return new ModelAndView("redirect:getAllUsers");
     }
-    
-    @RequestMapping(value = {"getAllUsers", "/"})
+
+    // original method
+
+   /* @RequestMapping(value = {"getAllUsers", "/", "/list"})
     public ModelAndView getAllUsers() {
     	logger.info("Getting the all Users.");
         List<User> userList = userService.getAllUsers();
         return new ModelAndView("userList", "userList", userList);
+    }*/
+
+    @RequestMapping(value = {"getAllUsers", "/", "/list"})
+    public ModelAndView getAllUsers(@RequestParam(required = false) Integer page) {
+        logger.info("Getting the all Users.");
+        List<User> userList = userService.getAllUsers();
+        ModelAndView modelAndView = new ModelAndView("userList", "userList", userList);
+        PagedListHolder<User> pagedListHolder = new PagedListHolder<>(userList);
+        pagedListHolder.setPageSize(2);
+        modelAndView.addObject("maxPages", pagedListHolder.getPageCount());
+        if(page==null || page < 1 || page > pagedListHolder.getPageCount())page=1;
+
+        modelAndView.addObject("page", page);
+        if(page == null || page < 1 || page > pagedListHolder.getPageCount()){
+            pagedListHolder.setPage(0);
+            modelAndView.addObject("userList", pagedListHolder.getPageList());
+        }
+        else if(page <= pagedListHolder.getPageCount()) {
+            pagedListHolder.setPage(page-1);
+            modelAndView.addObject("userList", pagedListHolder.getPageList());
+        }
+        return modelAndView;
     }
     
     @RequestMapping("searchUser")
