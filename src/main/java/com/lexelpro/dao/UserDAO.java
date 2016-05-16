@@ -18,4 +18,6 @@ public interface UserDAO {
     public List<User> getAllUsers();
     public User getUser(long id);
 	public List<User> getAllUsers(String userName);
+
+    public void createDemoData();
 }

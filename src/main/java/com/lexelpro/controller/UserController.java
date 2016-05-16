@@ -68,7 +68,7 @@ public class UserController {
         List<User> userList = userService.getAllUsers();
         ModelAndView modelAndView = new ModelAndView("userList", "userList", userList);
         PagedListHolder<User> pagedListHolder = new PagedListHolder<>(userList);
-        pagedListHolder.setPageSize(2);
+        pagedListHolder.setPageSize(5);
         modelAndView.addObject("maxPages", pagedListHolder.getPageCount());
         if(page==null || page < 1 || page > pagedListHolder.getPageCount())page=1;
 
@@ -89,5 +89,12 @@ public class UserController {
     	logger.info("Searching the User. User Names: "+searchName);
     	List<User> userList = userService.getAllUsers(searchName);
         return new ModelAndView("userList", "userList", userList);
+    }
+
+    @RequestMapping("addDemoData")
+    public ModelAndView addDemoData() {
+        logger.info("Creating demo data.");
+        userService.createDemoData();
+        return new ModelAndView("redirect:getAllUsers");
     }
 }

@@ -31,7 +31,12 @@
         </div>
         <div class="panel-body">
             <c:if test="${empty userList}">
-                There are no Users
+                <div>There are no Users</div>
+                <div class="col-md-4">
+                    <form action="addDemoData">
+                        <input class="btn btn-success" type='submit' value='add Demo Data'/>
+                    </form>
+                </div>
             </c:if>
             <c:if test="${not empty userList}">
             
