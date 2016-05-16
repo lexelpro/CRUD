@@ -61,14 +61,6 @@ public class UserController {
         return new ModelAndView("redirect:getAllUsers");
     }
 
-    // original method
-
-   /* @RequestMapping(value = {"getAllUsers", "/", "/list"})
-    public ModelAndView getAllUsers() {
-    	logger.info("Getting the all Users.");
-        List<User> userList = userService.getAllUsers();
-        return new ModelAndView("userList", "userList", userList);
-    }*/
 
     @RequestMapping(value = {"getAllUsers", "/", "/list"})
     public ModelAndView getAllUsers(@RequestParam(required = false) Integer page) {
