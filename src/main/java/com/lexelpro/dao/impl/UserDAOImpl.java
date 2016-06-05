@@ -1,7 +1,4 @@
-/**
- * 
- */
-package com.lexelpro.dao.impl;
+ package com.lexelpro.dao.impl;
 
 import com.lexelpro.dao.UserDAO;
 import com.lexelpro.entity.User;
