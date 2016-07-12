@@ -88,7 +88,7 @@ public class UserDAOImpl implements UserDAO {
         for (int i = 0; i < 30; i++) {
             User user = new User();
             user.setName("User" + i);
-            user.setAge(18 + (int)(Math.random() * ((60 - 18) + 1))); //genarate random age from 18 - 60
+            user.setAge(18 + (int)(Math.random() * ((60 - 18) + 1))); //generate random age from 18 - 60
             user.setAdmin(new Random().nextBoolean());
             hibernateUtil.create(user);
         }
